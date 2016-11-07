@@ -1,0 +1,58 @@
+<div ng-controller="View1Ctrl">
+
+	<br/>
+	<br/>
+	<div class="btn-group">
+		<input type="date" name="date" ng-model="date" required="true">
+		
+		<select ng-model="selectedSignal" required="true" ng-change="getLanes()"
+		        ng-options="signal for signal in signals">
+		    <option value="">Select Signal</option>
+		</select>
+		
+		<select ng-model="selectedFromLane"
+		        ng-options="lane for lane in lanes">
+		    <option value="">Select From Lane</option>
+		</select>
+
+		<select ng-model="selectedToLane"
+		        ng-options="lane for lane in lanes">
+		    <option value="">Select To Lane</option>
+		</select>
+
+		<select ng-model="selectedModel"
+		        ng-options="model for model in models">
+		    <option value="">Select Model</option>
+		</select>
+
+		<button name="button" value="Search" type="button" ng-click=filter()>Search</button>
+	</div>
+
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	
+	<table class="table table-striped">
+	    <thead>
+	      <tr>
+	        <th>Reg Num</th> 
+	        <th>From Lane</th>
+	        <th>To Lane</th>
+	        <th>Vehicle Type(wheeler)</th>
+	        <th>Model</th>
+	        <th>Speed</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr ng-repeat="record in list">
+		    <td>{{ record.reg_no }}</td>
+		    <td>{{ record.from }}</td>
+		    <td>{{ record.to }}</td>
+		    <td>{{ record.wheels }}</td>
+		    <td>{{ record.model }}</td>
+		    <td>{{ record.speed }}</td>
+		  </tr>
+	    </tbody>
+	</table>
+</div>
